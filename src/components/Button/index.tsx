@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import style from './style.module.css';
+import style from './style.module.scss';
 
 interface ButtonProps {
     children?:ReactNode;
@@ -8,7 +8,7 @@ interface ButtonProps {
 export default function Button({children}:ButtonProps) {
 
     return (
-        <button className={style.buttonRed}>
+        <button className={`${style.button} ${ style.searchButton}`}>
             {children}
         </button>
     )
