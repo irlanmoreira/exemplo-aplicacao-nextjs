@@ -1,0 +1,72 @@
+.main {
+    display: flex;
+    margin-left: 35px;
+    color: #494D4B;
+    line-height: 26px;
+    font-size: 20px;
+    max-height: 100vh;
+
+    .containerLeft {
+        max-width: 13%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 6px;
+        
+        img{
+            width: 100%;
+            
+            
+        }
+        
+        .title {
+            color: #8239F2;
+            font-weight: bold;
+        }
+
+        .author {
+            color: #008FCC;
+            font-size: 18px;
+        }
+    }
+
+    .containerRight{
+
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        padding-left: 54px;
+        h1 {
+            color: #8239F2;
+            font-weight: 600;
+            font-size: 48px;
+            line-height: 60px;
+        }
+
+        .comments{
+            
+            margin-top: 60px;
+            
+            h2{
+                font-size: 20px;
+                font-weight: 400;
+                color: #000;
+                margin-bottom: 20px;
+            }
+
+            .commentsContainer{
+                padding-left: 40px;
+                display: flex;
+                flex-direction: column;
+                gap: 26px;
+                max-height: 600px;
+                overflow: scroll;
+                overflow-x: hidden;
+                
+            }
+        }
+
+    }
+
+    
+}

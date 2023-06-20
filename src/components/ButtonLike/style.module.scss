@@ -1,0 +1,25 @@
+.like {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    span {
+        font-size: 12px;
+    }
+}
+
+.likeActive {
+    svg{
+        fill: #D11A1A;
+        stroke: #D11A1A;
+    }
+
+    span {
+        color: #D11A1A;
+    }
+}

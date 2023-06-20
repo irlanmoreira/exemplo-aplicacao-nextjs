@@ -6,7 +6,7 @@ export function SearchBar(){
     return (
     <form className={style.form}>
         <input type="text" placeholder="Pesquisar"/>
-        <Button>
+        <Button typeButton='search'>
             <SearchIcon width={30} height={30} color='white'/>
         </Button>
     </form>

@@ -1,0 +1,20 @@
+.container{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    .note{
+        width: 68px;
+        height: 69px;
+        background: #009933;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 28px;
+    }
+
+    .assessmentNumber{
+        font-size: 28px;
+    }
+}
