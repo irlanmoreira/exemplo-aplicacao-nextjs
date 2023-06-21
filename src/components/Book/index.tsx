@@ -1,11 +1,19 @@
 import Image from "next/image";
-import Link from "next/link";
 
-export function Book() {
+
+
+interface BookProps {
+    book: {
+        image: string,
+        title: string,
+    }
+}
+
+export function Book({book}:BookProps) {
     return (
 
         <section>
-            <div style={{ backgroundColor: "#c1c1c1", width: '148px', height: '266px' }} />
+            <Image src={book.image} width={148} height={266} alt={book.title}/>
         </section>
 
     )

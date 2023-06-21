@@ -4,34 +4,46 @@ import { Lexend } from 'next/font/google'
 import Image from 'next/image'
 import Button from '@/components/Button'
 import { Comment } from '@/components/Comment'
+import { httpClient } from '@/services/api'
+
+interface Book {
+    id: number,
+    image: string,
+    title: string,
+    abstract: string,
+    author: string,
+    comments: number[]
+}
 
 const lexend = Lexend({ subsets: ['latin'] })
-export default function BookPage() {
+export default async function BookPage({ params }: { params: { id: string } }) {
+
+    const { data: book } = await httpClient.get<Book>(`/books/${params.id}`)
+
+
     return (
         <main className={style.main}>
             <div className={style.containerLeft}>
 
-                <Image src="" width={200} height={296} alt="" />
-                <span className={style.title}>Título do livro</span>
-                <p>Lorem ipsum dolor sit amet</p>
-                <span className={style.author}>Autor do livro</span>
+                <Image src={book.image} width={200} height={296} alt="" />
+                <span className={style.title}>{book.title}</span>
+                <span className={style.author}>{book.author}</span>
                 <Button typeButton='secundary'>Adicionar à biblioteca</Button>
 
             </div>
             <div className={style.containerRight}>
-                <h1 className={lexend.className}>Book Page</h1>
+                <h1 className={lexend.className}>{book.title}</h1>
                 <Assessment note={4.5} assessmentNumber={1} />
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sagittis a augue sit amet auctor. Integer eget gravida nibh, vel feugiat nibh. Aenean malesuada, mi non maximus bibendum, magna lorem vulputate mauris, at rhoncus risus urna eu nibh. In sed tellus tellus. Suspendisse nulla augue, tempor sit amet ex vel, lobortis varius sapien. Phasellus in tristique felis. Phasellus blandit augue.
+                    {book.abstract}
                 </p>
                 <section className={style.comments}>
                     <h2>Comentários:</h2>
                     <div className={style.commentsContainer}>
-                        <Comment />
-                        <Comment />
-                        <Comment />
-                        <Comment />
-                        <Comment />
+                        {book.comments.map(async commentId => {
+                            const { data: comment } = await httpClient.get(`/comments/${commentId}`)
+                            return < Comment key={commentId} comment={comment} />
+                        })}
                     </div>
                 </section>
             </div>
