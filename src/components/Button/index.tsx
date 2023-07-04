@@ -1,15 +1,15 @@
 import { ReactNode } from 'react';
 import style from './style.module.scss';
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
     children?:ReactNode;
-    typeButton?:'primary'|'secundary'|'search';
+    typeButton?:'primary'|'secondary'|'search'|'danger';
 }
 
-export default function Button({typeButton, children}:ButtonProps) {
+export default function Button({typeButton, children, ...rest}:ButtonProps) {
 
     return (
-        <button className={`${style.button} ${typeButton&&style[typeButton]}`}>
+        <button className={`${style.button} ${typeButton&&style[typeButton]}`} type={rest.type}>
             {children}
         </button>
     )

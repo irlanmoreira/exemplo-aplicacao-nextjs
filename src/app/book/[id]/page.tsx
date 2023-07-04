@@ -28,7 +28,7 @@ export default async function BookPage({ params }: { params: { id: string } }) {
                 <Image src={book.image} width={200} height={296} alt="" />
                 <span className={style.title}>{book.title}</span>
                 <span className={style.author}>{book.author}</span>
-                <Button typeButton='secundary'>Adicionar à biblioteca</Button>
+                <Button typeButton='secondary'>Adicionar à biblioteca</Button>
 
             </div>
             <div className={style.containerRight}>

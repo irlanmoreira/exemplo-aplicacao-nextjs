@@ -1,0 +1,47 @@
+.container {
+    display: flex;
+    flex-grow: 1;
+
+
+
+    .titleSection {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #ECFAFF;
+        padding: 0px 110px;
+        width: 50%;
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #8239F2;
+            margin-bottom: 20px;
+        }
+    }
+
+    .signinSection {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            gap: 20px;
+            padding: 0 15%;
+
+            a {
+                color: #43E8Be;
+                font-weight: 600;
+
+            }
+        }
+    }
+}

@@ -24,12 +24,12 @@ export default async function Home() {
         {data.map(book => {
           return (
             <Link key={book.id} href={`book/${book.id}`}>
-              <Book book={book}/>
+              <Book book={book} />
             </Link>
           )
         })}
 
-
+        
       </div>
 
     </main>

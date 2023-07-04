@@ -1,7 +1,8 @@
+import Link from 'next/link'
 import style from './style.module.scss'
 
-export function Signin(){
+export function Signin() {
     return (
-        <div className={style.login}><a href="">Sign in</a></div>
+        <div className={style.login}><Link href="/signin">Sign in</Link></div>
     )
 }
