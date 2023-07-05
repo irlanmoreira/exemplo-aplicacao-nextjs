@@ -1,0 +1,24 @@
+.profile {
+    position: relative;
+    display: flex;
+
+
+    ul {
+
+        li {
+            cursor: pointer;
+        }
+
+        .subMenu {
+            position: absolute;
+            right: 0;
+            display: none;
+        }
+
+        list-style: none;
+
+        li:hover .subMenu {
+            display: block;
+        }
+    }
+}

@@ -1,4 +1,3 @@
-'use client'
 
 import Image from "next/image";
 import Logo from 'public/assets/logo.png'
@@ -6,21 +5,24 @@ import { SearchBar } from "../SearchBar";
 import style from './style.module.scss'
 import { Signin } from "../Signin";
 import Link from "next/link";
-import { UserContext } from "@/context/UserContext";
-import { useContext } from "react";
 
-export default function Home() {
+import { cookies } from 'next/headers'
+import { Profile } from "../Profile";
 
-    const { user } = useContext(UserContext)
-    console.log(user)
+export default async function Home() {
+
+    const isLogged = cookies().has('accessToken')
+    
     return (
         <header className={style.header}>
             <Link href="/">
                 <Image src={Logo} width={95} height={92} alt="logo" />
             </Link>
             <SearchBar />
+        
+           {isLogged ? <Profile /> : <Signin />}
 
-            {user ? user.name : <Signin />}
+
 
         </header>)
 }

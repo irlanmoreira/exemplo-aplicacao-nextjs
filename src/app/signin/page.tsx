@@ -7,39 +7,36 @@ import Logo from "public/assets/logo.png";
 import { Input } from "@/components/Input";
 import Button from "@/components/Button";
 import Link from "next/link";
-import { useContext, useEffect, useState } from "react";
-import { UserContext } from "@/context/UserContext";
+import { useState } from "react";
+
 import { useRouter } from "next/navigation";
+import { httpClient } from "@/services/api";
+
+import { setCookie } from 'cookies-next'
 export default function Signin() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const { user, setUser } = useContext(UserContext);
+
 
     const router = useRouter();
-    useEffect(() => {
-        if (user) {
-            console.log(user)
-            router.push('/');
 
-        } else {
-            console.log('user not found')
-        }
-    }, [])
 
-    function login(event: React.FormEvent<HTMLFormElement>) {
+
+
+    async function login(event: React.FormEvent<HTMLFormElement>) {
 
         event.preventDefault();
-        if (email === 'irlan@gmail.com' && password === '123456') {
-            setUser({
-                name: 'Irlan Moreira',
-                email: 'irlan@gmail.com',
-                photo: '131212l312lk3.png'
-            })
 
-            router.push('/');
+        const { data } = await httpClient.post('/login', { email, password })
+
+        if (data.accessToken) {
+            setCookie('accessToken', data.accessToken, { maxAge: 60 * 60 * 24 * 30 })
+            router.push('/',);
         }
+
+
 
     }
 
