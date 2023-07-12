@@ -9,18 +9,21 @@ import Button from "@/components/Button";
 import Link from "next/link";
 import { useState } from "react";
 
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import { httpClient } from "@/services/api";
 
-import { setCookie } from 'cookies-next'
+import { setCookie, hasCookie } from 'cookies-next'
 export default function Signin() {
+
+    if(hasCookie('accessToken')){
+        redirect('/')
+    }
+
+        
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-
-
-    const router = useRouter();
 
 
 
@@ -33,7 +36,7 @@ export default function Signin() {
 
         if (data.accessToken) {
             setCookie('accessToken', data.accessToken, { maxAge: 60 * 60 * 24 * 30 })
-            router.push('/',);
+            redirect('/',);
         }
 
 
@@ -55,6 +58,7 @@ export default function Signin() {
                     <Link href="">Esqueceu a senha?</Link>
                     <Button type="submit" typeButton="secondary">Criar nova conta</Button>
                 </form>
+                <a href={`https://github.com/login/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}`}>Entrar com o github</a>
             </section>
         </main>
     )
